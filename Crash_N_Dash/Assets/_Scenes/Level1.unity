@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 7d6d10378554a6a43880bdea30c15f72, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: ddfde99a2fa0ae64ca54cd163fb889b2, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -559,26 +559,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0a293cfdfeaaaed42a14cf36cea90271, type: 2}
-  - {fileID: 2100000, guid: 0a293cfdfeaaaed42a14cf36cea90271, type: 2}
-  - {fileID: 2100000, guid: 0a293cfdfeaaaed42a14cf36cea90271, type: 2}
-  - {fileID: 2100000, guid: 0a293cfdfeaaaed42a14cf36cea90271, type: 2}
-  - {fileID: 2100000, guid: 0a293cfdfeaaaed42a14cf36cea90271, type: 2}
-  - {fileID: 2100000, guid: 0a293cfdfeaaaed42a14cf36cea90271, type: 2}
-  - {fileID: 2100000, guid: 0a293cfdfeaaaed42a14cf36cea90271, type: 2}
-  - {fileID: 2100000, guid: 0a293cfdfeaaaed42a14cf36cea90271, type: 2}
-  - {fileID: 2100000, guid: 0a293cfdfeaaaed42a14cf36cea90271, type: 2}
-  - {fileID: 2100000, guid: 0a293cfdfeaaaed42a14cf36cea90271, type: 2}
-  - {fileID: 2100000, guid: 0a293cfdfeaaaed42a14cf36cea90271, type: 2}
-  - {fileID: 2100000, guid: 0a293cfdfeaaaed42a14cf36cea90271, type: 2}
-  - {fileID: 2100000, guid: 0a293cfdfeaaaed42a14cf36cea90271, type: 2}
-  - {fileID: 2100000, guid: 0a293cfdfeaaaed42a14cf36cea90271, type: 2}
-  - {fileID: 2100000, guid: 0a293cfdfeaaaed42a14cf36cea90271, type: 2}
-  - {fileID: 2100000, guid: 0a293cfdfeaaaed42a14cf36cea90271, type: 2}
-  - {fileID: 2100000, guid: 0a293cfdfeaaaed42a14cf36cea90271, type: 2}
-  - {fileID: 2100000, guid: 0a293cfdfeaaaed42a14cf36cea90271, type: 2}
-  - {fileID: 2100000, guid: 0a293cfdfeaaaed42a14cf36cea90271, type: 2}
-  - {fileID: 2100000, guid: 0a293cfdfeaaaed42a14cf36cea90271, type: 2}
+  - {fileID: 2100000, guid: 8416ef8d926448d478f2d1436d6c6838, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -616,8 +597,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1151817427}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 770, y: 2.9, z: 227}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 770, y: 6.9, z: 279.1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -634,7 +615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3b740555be20634b8d06b3383d3be2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 10
   spawnManager: {fileID: 1118111203}
 --- !u!54 &1151817433
 Rigidbody:
@@ -647,11 +628,65 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
+--- !u!1 &1277899110
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1277899112}
+  - component: {fileID: 1277899111}
+  - component: {fileID: 1277899113}
+  m_Layer: 0
+  m_Name: SkyBoxController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1277899111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277899110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7a1eda1ea34f2244acd5a220568fe62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 10
+--- !u!4 &1277899112
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277899110}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 546.79645, y: 269.07422, z: 620.57513}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!45 &1277899113
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277899110}
+  m_Enabled: 0
+  m_CustomSkybox: {fileID: 2100000, guid: ddfde99a2fa0ae64ca54cd163fb889b2, type: 2}
 --- !u!1 &1792197004
 GameObject:
   m_ObjectHideFlags: 0
@@ -873,7 +908,7 @@ Terrain:
   m_DrawInstanced: 0
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 2100000, guid: 547cc8f3053e8d84d83549aa5e84fcd0, type: 2}
+  m_MaterialTemplate: {fileID: 2100000, guid: a3ed46aaaf6cda34da961c73f17747ad, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
