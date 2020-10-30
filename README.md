@@ -6,3 +6,4 @@ A 3-D Endless Runner made with Unity. This project is for the Mobile Application
   * [Kajaman's Road](https://assetstore.unity.com/packages/3d/environments/roadways/kajaman-s-roads-free-52628)
   * [Road Blocker](https://assetstore.unity.com/packages/3d/props/exterior/road-blocker-663)
   * [GalaxyBox 2.0](https://assetstore.unity.com/packages/2d/textures-materials/sky/galaxybox-2-0-84349)
+  * [HQ Racing Car Model No.1203](https://assetstore.unity.com/packages/3d/vehicles/land/hq-racing-car-model-no-1203-139221)
