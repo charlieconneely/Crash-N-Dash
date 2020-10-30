@@ -10,6 +10,10 @@ public class SkyBoxController : MonoBehaviour
     void Update()
     {
         RenderSettings.skybox.SetFloat("_Rotation", Time.time * rotationSpeed);
-        // RenderSettings.skybox.SetFloat("_Exposure", 7.1f);
     }
+
+    public void setExposure(float value) {
+        RenderSettings.skybox.SetFloat("_Exposure", value);
+    }
+    
 }
