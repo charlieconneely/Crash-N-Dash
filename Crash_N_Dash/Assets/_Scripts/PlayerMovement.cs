@@ -6,8 +6,9 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 10f;
     [SerializeField] SpawnManager spawnManager;
+    [SerializeField] float xClampL = 760f;
+    [SerializeField] float xClampR = 845f;
     private Rigidbody rb = new Rigidbody();
-    private bool onRoad = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,26 +18,20 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (onRoad) {
-            Drive();
-        } else {
-            StartFalling();
-        }
+        Drive();
     }
 
     private void Drive() 
     {
         float hMovement = Input.GetAxis("Horizontal");
         float vMovement = Input.GetAxis("Vertical");
-        Vector3 playerVelocity = new Vector3(hMovement * speed, rb.velocity.y, vMovement * (speed/2));
-        rb.velocity = playerVelocity;
-        transform.Translate(playerVelocity);
-    }
 
-    private void StartFalling()
-    {
-        Vector3 playerVelocity = new Vector3(0, -10, 0);
-        transform.Translate(playerVelocity);
+        float xOffset = hMovement * (speed/2);
+        float zOffset = vMovement * speed;
+
+        float xPosition = Mathf.Clamp(transform.localPosition.x + xOffset, xClampL, xClampR);
+
+        transform.localPosition = new Vector3(xPosition, transform.localPosition.y, transform.localPosition.z + (zOffset));
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -46,15 +41,6 @@ public class PlayerMovement : MonoBehaviour
                 spawnManager.SpawnTriggerEntered();
                 Debug.Log("Hit spawn trigger");
                 break;
-            case "BarrierTrigger":
-                FallOffRoad();
-                Debug.Log("Hit barrier");
-                break;
-        }
-    }
-
-    private void FallOffRoad()
-    {
-        onRoad = false;
+        } 
     }
 }

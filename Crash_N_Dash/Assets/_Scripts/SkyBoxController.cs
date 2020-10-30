@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SkyBoxController : MonoBehaviour
 {
-    [SerializeField] float rotationSpeed = 10f;
+    [SerializeField] float rotationSpeed = 1f;
 
     // Update is called once per frame
     void Update()
