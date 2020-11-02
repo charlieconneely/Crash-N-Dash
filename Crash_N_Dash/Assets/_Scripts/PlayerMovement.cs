@@ -5,11 +5,16 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] SpawnManager spawnManager;
+    [SerializeField] SkyBoxController skyBoxController;
+    
     [SerializeField] float xClampL = 760f;
     [SerializeField] float xClampR = 848f;
-    private float speed = 0.1f;
+    [SerializeField] float controlYawFactor = 15f;
+    [SerializeField] float yawFactor = 0.5f;
+
     private Rigidbody rb = new Rigidbody();
-    [SerializeField] SkyBoxController skyBoxController;
+    private float speed = 0.1f;
+    private float hMovement;
 
     // Start is called before the first frame update
     void Start() {
@@ -19,20 +24,23 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update() {
         Drive();
+        Rotate();
     }
 
     private void Drive() {
-        float hMovement = Input.GetAxis("Horizontal");
-        float vMovement = Input.GetAxis("Vertical");
+        hMovement = Input.GetAxis("Horizontal");
 
         float xOffset = hMovement * (speed * 0.3f);
-        float zOffset = vMovement * speed;
-
         float xPosition = Mathf.Clamp(transform.localPosition.x + xOffset, xClampL, xClampR);
 
         transform.localPosition = new Vector3(xPosition, transform.localPosition.y, transform.localPosition.z + speed);
 
         if (speed < 10f) IncrementSpeed();
+    }
+
+    private void Rotate() {
+        float yaw = transform.localPosition.y * yawFactor + (hMovement * controlYawFactor);
+        transform.localRotation = Quaternion.Euler(0f, yaw, 0f);    
     }
 
     private void IncrementSpeed() {
