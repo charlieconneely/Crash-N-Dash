@@ -5,12 +5,13 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] SpawnManager spawnManager;
-    [SerializeField] SkyBoxController skyBoxController;
     
     [SerializeField] float xClampL = 760f;
     [SerializeField] float xClampR = 848f;
     [SerializeField] float controlYawFactor = 15f;
     [SerializeField] float yawFactor = 0.5f;
+    [SerializeField] float maxSpeed = 10f;
+    [SerializeField] float speedIncreaseRate = 0.005f;
 
     private Rigidbody rb = new Rigidbody();
     private float speed = 0.1f;
@@ -35,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
 
         transform.localPosition = new Vector3(xPosition, transform.localPosition.y, transform.localPosition.z + speed);
 
-        if (speed < 10f) IncrementSpeed();
+        if (speed < maxSpeed) IncrementSpeed();
     }
 
     private void Rotate() {
@@ -45,12 +46,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void IncrementSpeed() {
         // every 2 seconds - increment speed 
-        if (System.DateTime.Now.Second % 5 == 0) {
-            speed += 0.01f;
-            // increment skybox exposure respectively
-            skyBoxController.setExposure(speed);
-            Debug.Log(System.DateTime.Now.Second);
-        }
+        if (System.DateTime.Now.Second % 2 == 0) speed += speedIncreaseRate;
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -59,6 +55,9 @@ public class PlayerMovement : MonoBehaviour
             case "SpawnTrigger":
                 spawnManager.SpawnTriggerEntered();
                 Debug.Log("Hit spawn trigger");
+                break;
+            case "BarrierTrigger":
+                Debug.Log("Hit barrier");
                 break;
         } 
     }

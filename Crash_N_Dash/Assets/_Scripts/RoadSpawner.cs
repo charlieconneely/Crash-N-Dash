@@ -6,6 +6,7 @@ using System.Linq;
 public class RoadSpawner : MonoBehaviour
 {
     [SerializeField] List<GameObject> roads; 
+    [SerializeField] GameObject road;
     private float roadOffset = 400f;
 
     // Start is called before the first frame update
@@ -29,5 +30,6 @@ public class RoadSpawner : MonoBehaviour
         movedRoad.transform.position = new Vector3(750, 1, newZPos);
         // add to end of list
         roads.Add(movedRoad);
+
     }
 }

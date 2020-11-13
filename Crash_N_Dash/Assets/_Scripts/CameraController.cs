@@ -8,13 +8,11 @@ public class CameraController : MonoBehaviour
     private float yOffset = 10f;
     private float zOffset = -30f;
     
-    void Start()
-    {
+    void Start() {
         player = GameObject.Find("Player").transform;
     }
 
-    void LateUpdate()
-    {
+    void LateUpdate() {
         transform.position = new Vector3(player.position.x, player.position.y + yOffset, player.position.z + zOffset);        
     }
 }
