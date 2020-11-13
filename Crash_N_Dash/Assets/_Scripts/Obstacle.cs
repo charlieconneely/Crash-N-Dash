@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Barrier : MonoBehaviour
+public class Obstacle : MonoBehaviour
 {
     private Transform player;
+    private float offset = 20f;
 
     void Start() {
         player = GameObject.Find("Player").transform;
@@ -12,8 +13,8 @@ public class Barrier : MonoBehaviour
 
     void Update() {
         // if player has gone past - self destruct
-        if (transform.position.z < player.position.z) {
+        if (transform.position.z < player.position.z - offset) {
             Destroy(gameObject);
         }
     }
-}
+}   

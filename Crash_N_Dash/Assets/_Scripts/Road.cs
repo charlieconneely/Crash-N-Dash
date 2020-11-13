@@ -5,19 +5,25 @@ using UnityEngine;
 public class Road : MonoBehaviour
 {
     [SerializeField] List<GameObject> spawnPoints; 
-    [SerializeField] GameObject barrier;
+    [SerializeField] GameObject smallBarrier;
+    [SerializeField] GameObject bigBarrier;
 
     void Start() {
-        SpawnBarriers();
+        SpawnObstacles();
     }
 
-    public void SpawnBarriers() {
-        int position1 = Random.Range(0, 5);
+    public void SpawnObstacles() {
+        SpawnSmallBarriers();
+        SpawnBigBarriers();
+    }
 
-        Vector3 pos1 = new Vector3(spawnPoints[position1].transform.position.x,
-                                   spawnPoints[position1].transform.position.y,
-                                   spawnPoints[position1].transform.position.z);
+    private void SpawnSmallBarriers() {
+        Vector3 position = spawnPoints[Random.Range(0, 5)].transform.position;
+        Instantiate(smallBarrier, position, smallBarrier.transform.rotation);       
+    }
 
-        Instantiate(barrier, pos1, barrier.transform.rotation);
+    private void SpawnBigBarriers() {
+        Vector3 position = spawnPoints[Random.Range(6, 12)].transform.position;
+        Instantiate(bigBarrier, position, bigBarrier.transform.rotation);       
     }
 }
