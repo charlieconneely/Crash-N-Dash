@@ -5,14 +5,12 @@ using System.Linq;
 
 public class RoadSpawner : MonoBehaviour
 {
-    [SerializeField] List<GameObject> roads;
-    public Road road; 
+    [SerializeField] GameObject road;
+    [SerializeField] List<GameObject> roads; 
     private float roadOffset = 400f;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        road = Component.FindObjectOfType<Road>();
+    void Start() {
         // order list of roads by their z transform position
         if (roads != null && roads.Count > 0) {
             roads = roads.OrderBy(r => r.transform.position.z).ToList();
@@ -20,7 +18,7 @@ public class RoadSpawner : MonoBehaviour
     }
 
     // move road at the beginning of list to the end
-    public void MoveRoad() {
+    public void MoveRoad() {    
         // get first road obj in list
         GameObject movedRoad = roads[0];
         // remove it from list
@@ -31,6 +29,11 @@ public class RoadSpawner : MonoBehaviour
         movedRoad.transform.position = new Vector3(750, 1, newZPos);
         // add to end of list
         roads.Add(movedRoad);
-        road.SpawnObstacles();
+
+        // var obSpawner = movedRoad.GetComponent<ObstacleSpawner>();
+        // obSpawner.SpawnObstacles();
+        // // var obstacleSpawners = FindObjectsOfType<ObstacleSpawner>();
+        // // obstacleSpawners[count].SpawnObstacles();
+        // count++;
     }
 }

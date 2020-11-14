@@ -223,6 +223,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnPoint (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 5749671219015905773, guid: 3ae2f7ccb5d57994d8701663f59226fc, type: 3}
+      propertyPath: spawnPoints.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6744589484280027944, guid: 3ae2f7ccb5d57994d8701663f59226fc, type: 3}
       propertyPath: m_Name
       value: SpawnPoint (16)
@@ -325,6 +329,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1792197005}
     m_Modifications:
+    - target: {fileID: 2749450612027324868, guid: 3ae2f7ccb5d57994d8701663f59226fc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6201980395700582451, guid: 3ae2f7ccb5d57994d8701663f59226fc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7224921122103989984, guid: 3ae2f7ccb5d57994d8701663f59226fc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 750
@@ -594,6 +606,7 @@ GameObject:
   - component: {fileID: 1118111205}
   - component: {fileID: 1118111204}
   - component: {fileID: 1118111203}
+  - component: {fileID: 1118111206}
   m_Layer: 0
   m_Name: SpawnManager
   m_TagString: Untagged
@@ -625,6 +638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19dd8498dda89f4091d94a37a190781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  road: {fileID: 7224921122103989987, guid: 3ae2f7ccb5d57994d8701663f59226fc, type: 3}
   roads:
   - {fileID: 1838797174}
   - {fileID: 159429190}
@@ -634,7 +648,6 @@ MonoBehaviour:
   - {fileID: 1700221944}
   - {fileID: 1301636798}
   - {fileID: 1821943586}
-  road: {fileID: 7224921122103989987, guid: 3ae2f7ccb5d57994d8701663f59226fc, type: 3}
 --- !u!4 &1118111205
 Transform:
   m_ObjectHideFlags: 0
@@ -649,6 +662,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1118111206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1118111202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b2fb85eec799784f9d977e12c3bbabe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoints: []
+  smallBarrier: {fileID: 5753725508292356102, guid: 7b28ffdea73e3404d90fb617a396e86e, type: 3}
+  bigBarrier: {fileID: 929195488531435499, guid: cc7bdf59e4ccc3a4bae042ba19a63e7a, type: 3}
 --- !u!1 &1187439212 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 67718071411813282, guid: 3ae2f7ccb5d57994d8701663f59226fc, type: 3}
@@ -1031,6 +1059,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1792197005}
     m_Modifications:
+    - target: {fileID: 6225225674596800613, guid: 3ae2f7ccb5d57994d8701663f59226fc, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7224921122103989984, guid: 3ae2f7ccb5d57994d8701663f59226fc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 750

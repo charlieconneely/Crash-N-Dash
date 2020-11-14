@@ -6,9 +6,8 @@ public class SpawnManager : MonoBehaviour
 {
     RoadSpawner roadSpawner;
     Rigidbody rb = new Rigidbody();
-    // Start is called before the first frame update
-    void Start()
-    {
+    
+    void Start() {
         roadSpawner = GetComponent<RoadSpawner>();
         rb = GetComponent<Rigidbody>();
     }
