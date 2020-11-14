@@ -8,6 +8,15 @@ TagManager:
   - BarrierTrigger
   - ObstacleCollector
   - SpawnPoint
+  - Road1
+  - Road2
+  - Road3
+  - Road4
+  - Road5
+  - Road6
+  - Road7
+  - Road8
+  - SpawnPoints
   layers:
   - Default
   - TransparentFX

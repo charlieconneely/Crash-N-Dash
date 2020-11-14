@@ -8,6 +8,7 @@ public class RoadSpawner : MonoBehaviour
     [SerializeField] GameObject road;
     [SerializeField] List<GameObject> roads; 
     private float roadOffset = 400f;
+    private ObstacleSpawner os = new ObstacleSpawner();
 
     // Start is called before the first frame update
     void Start() {
@@ -15,6 +16,7 @@ public class RoadSpawner : MonoBehaviour
         if (roads != null && roads.Count > 0) {
             roads = roads.OrderBy(r => r.transform.position.z).ToList();
         }
+        os = FindObjectOfType<ObstacleSpawner>();
     }
 
     // move road at the beginning of list to the end
@@ -30,10 +32,7 @@ public class RoadSpawner : MonoBehaviour
         // add to end of list
         roads.Add(movedRoad);
 
-        // var obSpawner = movedRoad.GetComponent<ObstacleSpawner>();
-        // obSpawner.SpawnObstacles();
-        // // var obstacleSpawners = FindObjectsOfType<ObstacleSpawner>();
-        // // obstacleSpawners[count].SpawnObstacles();
-        // count++;
+        // respawn obstacles
+        os.ReceiveRoad(movedRoad);
     }
 }

@@ -1223,6 +1223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoints: []
+  roads: []
   smallBarrier: {fileID: 5753725508292356102, guid: 7b28ffdea73e3404d90fb617a396e86e, type: 3}
   bigBarrier: {fileID: 929195488531435499, guid: cc7bdf59e4ccc3a4bae042ba19a63e7a, type: 3}
 --- !u!1 &7224921123104244685
@@ -1546,7 +1547,7 @@ GameObject:
   - component: {fileID: 5749671219015905773}
   m_Layer: 0
   m_Name: BarrierSpawnPoints
-  m_TagString: Untagged
+  m_TagString: SpawnPoints
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1590,12 +1591,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7740975438778052842}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b2fb85eec799784f9d977e12c3bbabe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoints: []
+  roads: []
   smallBarrier: {fileID: 5753725508292356102, guid: 7b28ffdea73e3404d90fb617a396e86e, type: 3}
   bigBarrier: {fileID: 929195488531435499, guid: cc7bdf59e4ccc3a4bae042ba19a63e7a, type: 3}
 --- !u!1 &8419224264162726944
