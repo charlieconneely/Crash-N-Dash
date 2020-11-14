@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float controlYawFactor = 15f;
     [SerializeField] float yawFactor = 0.5f;
     [SerializeField] float maxSpeed = 10f;
-    [SerializeField] float speedIncreaseRate = 0.005f;
+    [SerializeField] float speedIncreaseRate = 0.002f;
 
     private Rigidbody rb = new Rigidbody();
     private float speed = 0.1f;
@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void IncrementSpeed() {
         // every 2 seconds - increment speed 
-        if (System.DateTime.Now.Second % 2 == 0) speed += speedIncreaseRate;
+        if (System.DateTime.Now.Second % 4 == 0) speed += speedIncreaseRate;
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -54,7 +54,6 @@ public class PlayerMovement : MonoBehaviour
         {
             case "SpawnTrigger":
                 spawnManager.SpawnTriggerEntered();
-                Debug.Log("Hit spawn trigger");
                 break;
             case "BarrierTrigger":
                 Debug.Log("Hit barrier");

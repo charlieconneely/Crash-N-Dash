@@ -12,11 +12,22 @@ public class RoadSpawner : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
+        os = FindObjectOfType<ObstacleSpawner>();
+        OrderRoads();
+        InitialiseObstacles();
+    }
+
+    private void OrderRoads() {
         // order list of roads by their z transform position
         if (roads != null && roads.Count > 0) {
             roads = roads.OrderBy(r => r.transform.position.z).ToList();
         }
-        os = FindObjectOfType<ObstacleSpawner>();
+    }
+
+    private void InitialiseObstacles() {
+        foreach(GameObject road in roads) {
+            os.ReceiveRoad(road, "easy");
+        }
     }
 
     // move road at the beginning of list to the end
@@ -33,6 +44,6 @@ public class RoadSpawner : MonoBehaviour
         roads.Add(movedRoad);
 
         // respawn obstacles
-        os.ReceiveRoad(movedRoad);
+        os.ReceiveRoad(movedRoad, "hard");
     }
 }
