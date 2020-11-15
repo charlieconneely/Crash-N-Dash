@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float yawFactor = 0.5f;
     [SerializeField] float maxSpeed = 10f;
     [SerializeField] float speedIncreaseRate = 0.002f;
+    [SerializeField] GameObject explosionFX;
+    GameController gc = new GameController();
 
     private Rigidbody rb = new Rigidbody();
     private float speed = 0.1f;
@@ -20,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start() {
         rb = GetComponent<Rigidbody>();
+        gc = Component.FindObjectOfType<GameController>();
     }
 
     // Update is called once per frame
@@ -56,7 +59,9 @@ public class PlayerMovement : MonoBehaviour
                 spawnManager.SpawnTriggerEntered();
                 break;
             case "BarrierTrigger":
-                Debug.Log("Hit barrier");
+                Instantiate(explosionFX, transform.position, explosionFX.transform.rotation);
+                gc.RestartGame();
+                Destroy(gameObject);
                 break;
         } 
     }

@@ -9,8 +9,13 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] GameObject bigBarrier;
 
     // Receive road from RoadSpawner
-    public void ReceiveRoad(GameObject road, string level) {
+    public void ReceiveRoad(GameObject road) {
         spawnPoints.Clear();
+        PopulateSpawnPointArray(road);
+        SpawnObstacles();
+    }
+
+    private void PopulateSpawnPointArray(GameObject road) {
         foreach(Transform child in road.transform) {
             if (child.tag == "SpawnPoints") {
                 foreach(Transform subchild in child.transform) {
@@ -20,17 +25,9 @@ public class ObstacleSpawner : MonoBehaviour
                 }
             }
         }
-        switch(level) {
-            case "easy":
-                SpawnSmallBarriers();
-                break;            
-            case "hard":
-                SpawnObstacles();
-                break;
-        }
     }
 
-    public void SpawnObstacles() {
+    private void SpawnObstacles() {
         SpawnSmallBarriers();
         SpawnBigBarriers();
     }
