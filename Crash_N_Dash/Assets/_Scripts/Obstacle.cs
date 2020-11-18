@@ -5,7 +5,7 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
     private Transform player;
-    private float offset = 20f;
+    private float offset = 150f;
 
     void Start() {
         player = GameObject.Find("Player").transform;

@@ -17,6 +17,7 @@ TagManager:
   - Road7
   - Road8
   - SpawnPoints
+  - LaneBlockers
   layers:
   - Default
   - TransparentFX

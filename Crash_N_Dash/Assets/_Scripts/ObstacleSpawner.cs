@@ -5,17 +5,21 @@ using UnityEngine;
 public class ObstacleSpawner : MonoBehaviour
 {
     public List<GameObject> spawnPoints; 
+    public List<GameObject> laneBlockers;
     [SerializeField] GameObject smallBarrier;
     [SerializeField] GameObject bigBarrier;
+    private GameObject road;
 
     // Receive road from RoadSpawner
-    public void ReceiveRoad(GameObject road) {
+    public void ReceiveRoad(GameObject r) {
+        road = r;
         spawnPoints.Clear();
-        PopulateSpawnPointArray(road);
+        laneBlockers.Clear();
+        PopulateSpawnPointArray();
         SpawnObstacles();
     }
 
-    private void PopulateSpawnPointArray(GameObject road) {
+    private void PopulateSpawnPointArray() {
         foreach(Transform child in road.transform) {
             if (child.tag == "SpawnPoints") {
                 foreach(Transform subchild in child.transform) {
@@ -27,9 +31,31 @@ public class ObstacleSpawner : MonoBehaviour
         }
     }
 
+    private bool DiceRoll(int odds) {
+        var num1 = Random.Range(0, odds);
+        var num2 = Random.Range(0, odds);
+        if (num1 == num2) return true;
+        return false;
+    }
+
     private void SpawnObstacles() {
         SpawnSmallBarriers();
-        SpawnBigBarriers();
+        // SpawnBigBarriers();
+        // if odds met - block lane
+        if (DiceRoll(2)) BlockLane();
+    }
+
+    private void BlockLane() {
+        foreach(Transform child in road.transform) {
+            if (child.tag == "LaneBlockers") {
+                foreach(Transform subchild in child.transform) { 
+                    laneBlockers.Add(subchild.gameObject);
+                }
+            }
+        }
+        // pick a random lane to block
+        var lane = Random.Range(0, laneBlockers.Count);
+        laneBlockers[lane].SetActive(true);
     }
 
     private void SpawnSmallBarriers() {
