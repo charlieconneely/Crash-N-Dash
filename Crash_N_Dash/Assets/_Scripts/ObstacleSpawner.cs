@@ -6,8 +6,7 @@ public class ObstacleSpawner : MonoBehaviour
 {
     public List<GameObject> spawnPoints; 
     public List<GameObject> laneBlockers;
-    [SerializeField] GameObject smallBarrier;
-    [SerializeField] GameObject bigBarrier;
+    [SerializeField] GameObject car;
     [SerializeField] GameObject trafficCone;
     private GameObject road;
     private int zOffset = 175;
@@ -41,10 +40,9 @@ public class ObstacleSpawner : MonoBehaviour
     }
 
     private void SpawnObstacles() {
-        SpawnSmallBarriers();
-        // SpawnBigBarriers();
-        /* if odds met - block lane */
+        SpawnCar();
         SpawnTrafficCones();
+         /* if odds met - block lane */
         if (DiceRoll(2)) BlockLane();
     }
 
@@ -61,14 +59,12 @@ public class ObstacleSpawner : MonoBehaviour
         laneBlockers[lane].SetActive(true);
     }
 
-    private void SpawnSmallBarriers() {
-        Vector3 position = spawnPoints[Random.Range(0, 6)].transform.position;
-        Instantiate(smallBarrier, position, smallBarrier.transform.rotation);       
-    }
-
-    private void SpawnBigBarriers() {
-        Vector3 position = spawnPoints[Random.Range(6, 13)].transform.position;
-        Instantiate(bigBarrier, position, bigBarrier.transform.rotation);       
+    private void SpawnCar() {
+        var index = Random.Range(0, 6);
+        Vector3 pos = new Vector3(spawnPoints[index].transform.position.x,
+                                  spawnPoints[index].transform.position.y + 1.98f,
+                                  spawnPoints[index].transform.position.z);
+        Instantiate(car, pos, car.transform.rotation);        
     }
 
     private void SpawnTrafficCones() {
