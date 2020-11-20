@@ -8,9 +8,13 @@ public class ObstacleSpawner : MonoBehaviour
     public List<GameObject> laneBlockers;
     [SerializeField] GameObject smallBarrier;
     [SerializeField] GameObject bigBarrier;
+    [SerializeField] GameObject trafficCone;
     private GameObject road;
+    private int zOffset = 175;
+    private int xOffset = 40;
+    private int[] xBoundaries = {762, 845};
 
-    // Receive road from RoadSpawner
+    /* Receive road from RoadSpawner */
     public void ReceiveRoad(GameObject r) {
         road = r;
         spawnPoints.Clear();
@@ -23,9 +27,7 @@ public class ObstacleSpawner : MonoBehaviour
         foreach(Transform child in road.transform) {
             if (child.tag == "SpawnPoints") {
                 foreach(Transform subchild in child.transform) {
-                    if (subchild.tag == "SpawnPoint") {
-                        spawnPoints.Add(subchild.gameObject);
-                    }
+                    if (subchild.tag == "SpawnPoint") spawnPoints.Add(subchild.gameObject);
                 }
             }
         }
@@ -41,7 +43,8 @@ public class ObstacleSpawner : MonoBehaviour
     private void SpawnObstacles() {
         SpawnSmallBarriers();
         // SpawnBigBarriers();
-        // if odds met - block lane
+        /* if odds met - block lane */
+        SpawnTrafficCones();
         if (DiceRoll(2)) BlockLane();
     }
 
@@ -53,7 +56,7 @@ public class ObstacleSpawner : MonoBehaviour
                 }
             }
         }
-        // pick a random lane to block
+        /* pick a random lane to block */
         var lane = Random.Range(0, laneBlockers.Count);
         laneBlockers[lane].SetActive(true);
     }
@@ -66,5 +69,15 @@ public class ObstacleSpawner : MonoBehaviour
     private void SpawnBigBarriers() {
         Vector3 position = spawnPoints[Random.Range(6, 13)].transform.position;
         Instantiate(bigBarrier, position, bigBarrier.transform.rotation);       
+    }
+
+    private void SpawnTrafficCones() {
+        /* Instantiate traffic cone somewhere on current
+        road (x, z) transform */
+        var zPos = Random.Range(road.transform.position.z - zOffset,
+                                road.transform.position.z + zOffset);
+        var xPos = Random.Range(xBoundaries[0], xBoundaries[1]);
+        Vector3 position = new Vector3(xPos, road.transform.position.y, zPos);
+        Instantiate(trafficCone, position, trafficCone.transform.rotation);
     }
 }

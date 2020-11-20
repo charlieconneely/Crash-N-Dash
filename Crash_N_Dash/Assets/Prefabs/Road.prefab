@@ -1368,8 +1368,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoints: []
+  laneBlockers: []
   smallBarrier: {fileID: 5753725508292356102, guid: 7b28ffdea73e3404d90fb617a396e86e, type: 3}
   bigBarrier: {fileID: 929195488531435499, guid: cc7bdf59e4ccc3a4bae042ba19a63e7a, type: 3}
+  trafficCone: {fileID: 3982543513758062215, guid: c6c61a41cf0935543921a53648f8a857, type: 3}
 --- !u!1 &7224921123104244685
 GameObject:
   m_ObjectHideFlags: 0
@@ -1777,8 +1779,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoints: []
+  laneBlockers: []
   smallBarrier: {fileID: 5753725508292356102, guid: 7b28ffdea73e3404d90fb617a396e86e, type: 3}
   bigBarrier: {fileID: 929195488531435499, guid: cc7bdf59e4ccc3a4bae042ba19a63e7a, type: 3}
+  trafficCone: {fileID: 0}
 --- !u!1 &7945080940927268128
 GameObject:
   m_ObjectHideFlags: 0
