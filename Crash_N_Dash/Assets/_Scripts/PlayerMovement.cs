@@ -60,8 +60,7 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case "BarrierTrigger":
                 Instantiate(explosionFX, transform.position, explosionFX.transform.rotation);
-                gc.RestartGame();
-                Destroy(gameObject);
+                gc.LoseLife();
                 break;
         } 
     }

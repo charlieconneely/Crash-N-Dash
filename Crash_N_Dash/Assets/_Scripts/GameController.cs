@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public void RestartGame() {
-        Debug.Log("Called Restart Game within GC");
+    [SerializeField] int lives = 3;
+
+    public void LoseLife() {
+        lives--;
+        Debug.Log(lives);
+        if (lives < 1) {
+            Destroy(GameObject.Find("Player"));
+        }    
     }
 }
