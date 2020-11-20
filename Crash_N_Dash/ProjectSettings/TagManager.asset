@@ -18,6 +18,8 @@ TagManager:
   - Road8
   - SpawnPoints
   - LaneBlockers
+  - Car
+  - Cone
   layers:
   - Default
   - TransparentFX

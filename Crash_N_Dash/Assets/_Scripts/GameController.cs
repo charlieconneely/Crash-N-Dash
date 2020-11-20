@@ -13,4 +13,8 @@ public class GameController : MonoBehaviour
             Destroy(GameObject.Find("Player"));
         }    
     }
+
+    public void LosePoints() {
+        Debug.Log("lost points");
+    }
 }

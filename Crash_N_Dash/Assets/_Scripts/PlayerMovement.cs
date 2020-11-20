@@ -5,27 +5,24 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] SpawnManager spawnManager;
-    
     [SerializeField] float xClampL = 760f;
     [SerializeField] float xClampR = 848f;
     [SerializeField] float controlYawFactor = 15f;
     [SerializeField] float yawFactor = 0.5f;
-    [SerializeField] float maxSpeed = 10f;
-    [SerializeField] float speedIncreaseRate = 0.002f;
+    [SerializeField] float speed = 1f;
+    private float maxSpeed = 7f;
+    private float speedIncreaseRate = 0.5f;
     [SerializeField] GameObject explosionFX;
-    GameController gc = new GameController();
 
+    GameController gc = new GameController();
     private Rigidbody rb = new Rigidbody();
-    private float speed = 0.1f;
     private float hMovement;
 
-    // Start is called before the first frame update
     void Start() {
         rb = GetComponent<Rigidbody>();
         gc = Component.FindObjectOfType<GameController>();
     }
 
-    // Update is called once per frame
     void Update() {
         Drive();
         Rotate();
@@ -48,8 +45,10 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void IncrementSpeed() {
-        // every 2 seconds - increment speed 
-        if (System.DateTime.Now.Second % 4 == 0) speed += speedIncreaseRate;
+        /* Every x seconds - increment speed */
+        if (System.DateTime.Now.Second % 10 == 0) {
+            speed += speedIncreaseRate * Time.deltaTime;
+        }
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -59,8 +58,12 @@ public class PlayerMovement : MonoBehaviour
                 spawnManager.SpawnTriggerEntered();
                 break;
             case "BarrierTrigger":
+            case "Car":
                 Instantiate(explosionFX, transform.position, explosionFX.transform.rotation);
                 gc.LoseLife();
+                break;
+            case "Cone":
+                gc.LosePoints();
                 break;
         } 
     }
