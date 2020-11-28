@@ -1369,9 +1369,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoints: []
   laneBlockers: []
-  smallBarrier: {fileID: 5753725508292356102, guid: 7b28ffdea73e3404d90fb617a396e86e, type: 3}
   car: {fileID: 3701584840941693275, guid: c306d105e2deb9c4584fb9fb471e26d2, type: 3}
   trafficCone: {fileID: 3982543513758062215, guid: c6c61a41cf0935543921a53648f8a857, type: 3}
+  petrolCan: {fileID: 8323419720555840222, guid: 5a1b1f5fc4592b34daf8b800a4a7d515, type: 3}
 --- !u!1 &7224921123104244685
 GameObject:
   m_ObjectHideFlags: 0
@@ -1726,7 +1726,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7931055168603466985}
-  - component: {fileID: 5749671219015905773}
   m_Layer: 0
   m_Name: BarrierSpawnPoints
   m_TagString: SpawnPoints
@@ -1766,23 +1765,6 @@ Transform:
   m_Father: {fileID: 7224921122103989984}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5749671219015905773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7740975438778052842}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b2fb85eec799784f9d977e12c3bbabe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPoints: []
-  laneBlockers: []
-  smallBarrier: {fileID: 5753725508292356102, guid: 7b28ffdea73e3404d90fb617a396e86e, type: 3}
-  car: {fileID: 0}
-  trafficCone: {fileID: 0}
 --- !u!1 &7945080940927268128
 GameObject:
   m_ObjectHideFlags: 0

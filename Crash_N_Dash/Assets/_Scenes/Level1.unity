@@ -1363,6 +1363,7 @@ MonoBehaviour:
   laneBlockers: []
   car: {fileID: 3701584840941693275, guid: c306d105e2deb9c4584fb9fb471e26d2, type: 3}
   trafficCone: {fileID: 3982543513758062215, guid: c6c61a41cf0935543921a53648f8a857, type: 3}
+  petrolCan: {fileID: 8323419720555840222, guid: 5a1b1f5fc4592b34daf8b800a4a7d515, type: 3}
 --- !u!1 &1118372176
 GameObject:
   m_ObjectHideFlags: 0
