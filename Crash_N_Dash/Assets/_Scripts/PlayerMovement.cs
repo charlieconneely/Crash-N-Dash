@@ -65,6 +65,9 @@ public class PlayerMovement : MonoBehaviour
             case "Cone":
                 gc.LosePoints();
                 break;
+            case "PetrolCan":
+                gc.GainPoints();
+                break;
         } 
     }
 }
