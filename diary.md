@@ -14,10 +14,15 @@
 
 
 ### Obstacle Spawning
-***Task***: ... <br>
+***Task***: Spawn obstacles (cars, cones etc.) randomly on a newly spawned road <br>
 ***Solution***:
-* ...
-  * ...
+* The road prefab contains empty game objects which act as spawn points.
+* These spawn points are collected into a List in `ObstacleSpawner.cs`
+* After a road has been moved to its new z position inside `RoadSpawner.cs`, the <br/> `ReceiveRoad()` method in `ObstacleSpawner.cs` is called.
+* The `ReceiveRoad()` method will: 
+  * Clear whatever is in the arrays at first.
+  * Repopulate the spawn points array with the spawn point objects on the current road <br/> object passed in as a parameter.
+  * Call `SpawnObstacles()` which will:<br/> - Spawn cars randomly at the position of one of these spawn point objects. <br/> - Spawn other objects randomly within the general confines of the road object. 
 
 
 ### Speed increase
