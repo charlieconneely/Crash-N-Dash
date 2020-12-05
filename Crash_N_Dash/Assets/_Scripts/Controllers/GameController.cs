@@ -9,11 +9,14 @@ public class GameController : MonoBehaviour
     [SerializeField] int score = 0;
     [SerializeField] Text scoreText;
     [SerializeField] Text livesText;
+    [SerializeField] Text signsText;
     private int pointsValue = 50;
+    private int speedSigns = 0;
 
     void Update() {
         scoreText.text = "Score: " + score;
         livesText.text = "Lives: " + lives;
+        signsText.text = "Signs: " + speedSigns;
     }
 
     public void LoseLife() {
@@ -31,6 +34,19 @@ public class GameController : MonoBehaviour
         if (score <= 0) return; 
         score -= pointsValue;
         Debug.Log("Score: " + score);
+    }
+
+    public void AddSpeedSign() {
+        speedSigns++;
+        Debug.Log("speed signs: " + speedSigns);
+    }
+
+    public bool HasSpeedSign() {
+        if (speedSigns > 0) {
+            speedSigns--;
+            return true;
+        }
+        return false;
     }
 
     IEnumerator GameOver() {

@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float speed = 1f;
     private float maxSpeed = 7f;
     private float speedIncreaseRate = 0.5f;
+    private bool hasSpeedSigns = false;
     [SerializeField] GameObject explosionFX;
 
     GameController gc = new GameController();
@@ -31,10 +32,16 @@ public class PlayerMovement : MonoBehaviour
     private void Drive() {
         hMovement = Input.GetAxis("Horizontal");
 
-        float xOffset = hMovement * (speed * 0.3f);
+        float xOffset = hMovement * (speed * 0.4f);
         float xPosition = Mathf.Clamp(transform.localPosition.x + xOffset, xClampL, xClampR);
 
         transform.localPosition = new Vector3(xPosition, transform.localPosition.y, transform.localPosition.z + speed);
+
+        /* Use speed sign to slow down */ 
+        if (Input.GetKeyDown("space")) {
+            hasSpeedSigns = gc.HasSpeedSign();
+            if (hasSpeedSigns) StartCoroutine("SlowDown");
+        }
 
         if (speed < maxSpeed) IncrementSpeed();
     }
@@ -67,7 +74,18 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case "PetrolCan":
                 gc.GainPoints();
+                Destroy(other.gameObject);
+                break;
+            case "SpeedSign":
+                gc.AddSpeedSign();
+                Destroy(other.gameObject);
                 break;
         } 
+    }
+
+    IEnumerator SlowDown() {
+        speed = speed * 0.5f;
+        yield return new WaitForSeconds(5f);
+        speed = speed * 2;
     }
 }
