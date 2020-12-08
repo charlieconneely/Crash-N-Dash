@@ -12,12 +12,9 @@ public class Obstacle : MonoBehaviour
     }
 
     void Update() {
-        /* check if player is dead */
-        if (player != null) {
-            /* if player has gone past - self destruct */
-            if (transform.position.z < player.position.z - offset) {
-                Destroy(gameObject);
-            }
-        }
+        /* if player is dead or passed by */
+        if (player == null || transform.position.z < player.position.z - offset) {
+            Destroy(gameObject);
+        } 
     }
 }   

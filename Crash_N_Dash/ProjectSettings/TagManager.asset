@@ -22,6 +22,7 @@ TagManager:
   - Cone
   - PetrolCan
   - SpeedSign
+  - Engine
   layers:
   - Default
   - TransparentFX

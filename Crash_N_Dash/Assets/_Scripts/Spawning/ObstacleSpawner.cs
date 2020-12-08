@@ -10,6 +10,7 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] GameObject trafficCone;
     [SerializeField] GameObject petrolCan;
     [SerializeField] GameObject speedSign;
+    [SerializeField] GameObject engine;
     private GameObject road;
     private int zOffset = 175;
     private int xOffset = 40;
@@ -45,8 +46,9 @@ public class ObstacleSpawner : MonoBehaviour
         SpawnCar();
         SpawnObject(trafficCone);
         SpawnObject(petrolCan);
-        if(DiceRoll(15)) SpawnObject(speedSign);
-        if (DiceRoll(2)) BlockLane();
+        if (DiceRoll(15)) SpawnObject(speedSign);
+        if (DiceRoll(15)) SpawnObject(engine);
+        if (DiceRoll(3)) BlockLane();
     }
 
     private void BlockLane() {
@@ -65,7 +67,7 @@ public class ObstacleSpawner : MonoBehaviour
     private void SpawnCar() {
         var index = Random.Range(0, 6);
         Vector3 pos = new Vector3(spawnPoints[index].transform.position.x,
-                                  spawnPoints[index].transform.position.y + 1.98f,
+                                  spawnPoints[index].transform.position.y + 2.5f,
                                   spawnPoints[index].transform.position.z);
         Instantiate(car, pos, car.transform.rotation);        
     }
@@ -76,7 +78,8 @@ public class ObstacleSpawner : MonoBehaviour
         var zPos = Random.Range(road.transform.position.z - zOffset,
                                 road.transform.position.z + zOffset);
         var xPos = Random.Range(xBoundaries[0], xBoundaries[1]);
-        Vector3 position = new Vector3(xPos, road.transform.position.y, zPos);
+        // Vector3 position = new Vector3(xPos, road.transform.position.y, zPos);
+        Vector3 position = new Vector3(xPos, obj.transform.position.y, zPos);
         Instantiate(obj, position, obj.transform.rotation);
     }
 }

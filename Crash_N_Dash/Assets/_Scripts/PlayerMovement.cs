@@ -80,6 +80,10 @@ public class PlayerMovement : MonoBehaviour
                 gc.AddSpeedSign();
                 Destroy(other.gameObject);
                 break;
+            case "Engine":
+                gc.GainLife();
+                Destroy(other.gameObject);
+                break;
         } 
     }
 

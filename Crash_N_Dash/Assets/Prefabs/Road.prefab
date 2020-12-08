@@ -1373,6 +1373,7 @@ MonoBehaviour:
   trafficCone: {fileID: 3982543513758062215, guid: c6c61a41cf0935543921a53648f8a857, type: 3}
   petrolCan: {fileID: 8323419720555840222, guid: 5a1b1f5fc4592b34daf8b800a4a7d515, type: 3}
   speedSign: {fileID: 4438344146923257682, guid: 0020abf086daf6949bc52c976ca9ac58, type: 3}
+  engine: {fileID: 4067732797590526227, guid: 161813812a7284040bac139780e5aca4, type: 3}
 --- !u!1 &7224921123104244685
 GameObject:
   m_ObjectHideFlags: 0

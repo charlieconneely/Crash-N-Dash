@@ -14,14 +14,15 @@ public class GameController : MonoBehaviour
     private int speedSigns = 0;
 
     void Update() {
-        scoreText.text = "Score: " + score;
-        livesText.text = "Lives: " + lives;
-        signsText.text = "Signs: " + speedSigns;
+        scoreText.text = score.ToString();
+        livesText.text = lives.ToString();
+        signsText.text = speedSigns.ToString();
     }
 
+    public void GainLife() {lives++;}
+
     public void LoseLife() {
-        lives--;
-        Debug.Log(lives);
+        if (lives > 0) lives--;
         if (lives < 1) StartCoroutine("GameOver");
     }
 

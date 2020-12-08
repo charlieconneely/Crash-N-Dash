@@ -26,7 +26,7 @@ public class SkyBoxController : MonoBehaviour
         if (System.DateTime.Now.Second % 2 == 0) {
             switch (increase) {
                 case true: 
-                    if (exp < 10f) {
+                    if (exp < 3f) {
                         exp += exposureIncreaseSpeed;
                     } else {
                         increase = false;
