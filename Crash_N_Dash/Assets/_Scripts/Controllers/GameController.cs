@@ -10,13 +10,21 @@ public class GameController : MonoBehaviour
     [SerializeField] Text scoreText;
     [SerializeField] Text livesText;
     [SerializeField] Text signsText;
+    [SerializeField] Text countdown;
+    [SerializeField] Text speedText;
     private int pointsValue = 50;
     private int speedSigns = 0;
+    private float displaySpeed = 10f;
+
+    void Start() {
+        StartCoroutine("StartGame");
+    }
 
     void Update() {
         scoreText.text = score.ToString();
         livesText.text = lives.ToString();
         signsText.text = speedSigns.ToString();
+        speedText.text = displaySpeed.ToString("F1") + " km/h";
     }
 
     public void GainLife() {lives++;}
@@ -28,18 +36,15 @@ public class GameController : MonoBehaviour
 
     public void GainPoints() {
         score += pointsValue;
-        Debug.Log("Score: " + score);
     }
 
     public void LosePoints() {
         if (score <= 0) return; 
         score -= pointsValue;
-        Debug.Log("Score: " + score);
     }
 
     public void AddSpeedSign() {
         speedSigns++;
-        Debug.Log("speed signs: " + speedSigns);
     }
 
     public bool HasSpeedSign() {
@@ -50,9 +55,22 @@ public class GameController : MonoBehaviour
         return false;
     }
 
+    public void setDisplaySpeed(float speed) {
+        displaySpeed = speed * 10f;
+    }
+
     IEnumerator GameOver() {
         Destroy(GameObject.Find("Player"));
         yield return new WaitForSeconds(3f);
         Debug.Log("Back to main menu");
+    }
+
+    IEnumerator StartGame() {
+        yield return new WaitForSeconds(1f);
+        countdown.text = "2";
+        yield return new WaitForSeconds(1f);
+        countdown.text = "1";
+        yield return new WaitForSeconds(1f);
+        countdown.gameObject.SetActive(false);
     }
 }
