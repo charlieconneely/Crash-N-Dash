@@ -13,3 +13,4 @@ A 3-D Endless Runner made with Unity (version 2020.1.6). This project is for the
   * [Free Pixel Font - Thaleah](https://assetstore.unity.com/packages/2d/fonts/free-pixel-font-thaleah-140059)
   * [US Road Signs Free](https://assetstore.unity.com/packages/3d/props/exterior/us-road-signs-free-164941)
   * [Sci-Fi Battery Pack](https://assetstore.unity.com/packages/3d/environments/sci-fi/sci-fi-battery-pack-free-19738)
+  * [Dark Future Music](https://assetstore.unity.com/packages/audio/music/electronic/dark-future-music-3777)
