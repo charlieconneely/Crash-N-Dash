@@ -38,8 +38,12 @@ public class PlayerMovement : MonoBehaviour
         hMovement = Input.GetAxis("Horizontal");
         float xOffset = hMovement * (speed * 0.4f);
         float xPosition = Mathf.Clamp(transform.localPosition.x + xOffset, xClampL, xClampR);
-        transform.localPosition = new Vector3(xPosition, transform.localPosition.y, transform.localPosition.z + speed);
         
+        /* If game is not paused - move forward */
+        if (!PauseMenu.isGamePaused) {
+            transform.localPosition = new Vector3(xPosition, transform.localPosition.y, transform.localPosition.z + speed);
+        }
+
         /* Use speed sign to slow down */ 
         if (Input.GetKeyDown("space")) {
             hasSpeedSigns = gc.HasSpeedSign();

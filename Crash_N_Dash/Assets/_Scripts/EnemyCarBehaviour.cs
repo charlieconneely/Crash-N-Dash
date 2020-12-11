@@ -11,8 +11,10 @@ public class EnemyCarBehaviour : MonoBehaviour
     }
 
     private void Drive() {
-        transform.localPosition = new Vector3(transform.localPosition.x, 
-                                              transform.localPosition.y,
-                                              transform.localPosition.z - speed);        
+        if (!PauseMenu.isGamePaused) {
+            transform.localPosition = new Vector3(transform.localPosition.x, 
+                transform.localPosition.y,
+                transform.localPosition.z - speed);        
+        }
     }
 }
