@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MusicPlayer : MonoBehaviour
+public class Splash : MonoBehaviour
 {
     private void Awake() {
         DontDestroyOnLoad(gameObject);

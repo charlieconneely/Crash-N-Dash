@@ -20,21 +20,32 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void Resume() {
+        PlaySound();
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1;
         isGamePaused = false;
     }
 
     void Pause() {
+        PlaySound();
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0;
         isGamePaused = true;
     }
 
+    public void RestartGame() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     public void QuitGame() {
+        PlaySound();
         isGamePaused = false;
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void PlaySound() {
+        FindObjectOfType<AudioManager>().Play("Click");
     }
 }

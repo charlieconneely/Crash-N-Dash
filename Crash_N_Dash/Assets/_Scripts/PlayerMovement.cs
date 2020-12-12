@@ -75,23 +75,33 @@ public class PlayerMovement : MonoBehaviour
             case "Car":
                 Instantiate(explosionFX, transform.position, explosionFX.transform.rotation);
                 gc.LoseLife();
+                PlaySound("Crash");
                 break;
             case "Cone":
                 gc.LosePoints();
+                PlaySound("HitCone");
+                Destroy(other.gameObject);
                 break;
             case "PetrolCan":
                 gc.GainPoints();
+                PlaySound("PointsGained");
                 Destroy(other.gameObject);
                 break;
             case "SpeedSign":
                 gc.AddSpeedSign();
+                PlaySound("Bling");
                 Destroy(other.gameObject);
                 break;
             case "Engine":
                 gc.GainLife();
+                PlaySound("Bling");
                 Destroy(other.gameObject);
                 break;
         } 
+    }
+
+    private void PlaySound(string sound) {
+        FindObjectOfType<AudioManager>().Play(sound);
     }
 
     IEnumerator SlowDown() {

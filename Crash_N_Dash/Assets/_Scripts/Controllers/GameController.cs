@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameController : MonoBehaviour
 {
@@ -10,8 +11,11 @@ public class GameController : MonoBehaviour
     [SerializeField] Text scoreText;
     [SerializeField] Text livesText;
     [SerializeField] Text signsText;
-    [SerializeField] Text countdown;
     [SerializeField] Text speedText;
+    [SerializeField] TextMeshProUGUI countdown;
+    [SerializeField] TextMeshProUGUI menuScore;
+    [SerializeField] TextMeshProUGUI finalScore;
+    [SerializeField] GameObject GameOverMenu;
     private int pointsValue = 50;
     private int speedSigns = 0;
     private float displaySpeed = 10f;
@@ -25,6 +29,7 @@ public class GameController : MonoBehaviour
         livesText.text = lives.ToString();
         signsText.text = speedSigns.ToString();
         speedText.text = displaySpeed.ToString("F1") + " km/h";
+        menuScore.text = finalScore.text = "YOUR SCORE: " + score;
     }
 
     public void GainLife() {lives++;}
@@ -61,8 +66,8 @@ public class GameController : MonoBehaviour
 
     IEnumerator GameOver() {
         Destroy(GameObject.Find("Player"));
-        yield return new WaitForSeconds(3f);
-        Debug.Log("Back to main menu");
+        yield return new WaitForSeconds(1f);
+        GameOverMenu.SetActive(true);
     }
 
     IEnumerator StartGame() {
