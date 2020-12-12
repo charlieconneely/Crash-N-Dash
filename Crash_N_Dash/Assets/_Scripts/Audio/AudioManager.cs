@@ -30,7 +30,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    void Start() {
+    void Start() {        
         Play("Theme");
     }
 
@@ -41,5 +41,31 @@ public class AudioManager : MonoBehaviour
             return;
         }
         s.source.Play();
+    }
+
+    public void AdjustVolume(float volume, string name) {
+        if (name=="Theme") {
+            Sound s = Array.Find(sounds, sound => sound.name == name);
+            s.source.volume = volume;
+            return;
+        } 
+        /* Adjust all sounds besides music */
+        foreach (Sound s in sounds) {
+            if (s.name != "Theme") {
+                s.source.volume = volume;
+            }
+        }
+    }
+
+    public float GetVolume(string name) {
+        /* If name != theme - adjust all sounds */
+        if (name != "Theme") {
+            foreach (Sound sound in sounds) {
+                return sound.source.volume;
+            }
+        }
+        /* Adjust music only */
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        return s.source.volume;
     }
 }
