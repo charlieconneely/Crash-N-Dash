@@ -13,7 +13,6 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] GameObject engine;
     private GameObject road;
     private int zOffset = 175;
-    private int xOffset = 40;
     private int[] xBoundaries = {762, 845};
 
     /* Receive road from RoadSpawner */
@@ -78,7 +77,6 @@ public class ObstacleSpawner : MonoBehaviour
         var zPos = Random.Range(road.transform.position.z - zOffset,
                                 road.transform.position.z + zOffset);
         var xPos = Random.Range(xBoundaries[0], xBoundaries[1]);
-        // Vector3 position = new Vector3(xPos, road.transform.position.y, zPos);
         Vector3 position = new Vector3(xPos, obj.transform.position.y, zPos);
         Instantiate(obj, position, obj.transform.rotation);
     }

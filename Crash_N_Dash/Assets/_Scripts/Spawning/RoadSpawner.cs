@@ -8,7 +8,7 @@ public class RoadSpawner : MonoBehaviour
     [SerializeField] GameObject road;
     [SerializeField] List<GameObject> roads; 
     private float roadOffset = 400f;
-    private ObstacleSpawner os = new ObstacleSpawner();
+    private ObstacleSpawner os;
 
     // Start is called before the first frame update
     void Start() {

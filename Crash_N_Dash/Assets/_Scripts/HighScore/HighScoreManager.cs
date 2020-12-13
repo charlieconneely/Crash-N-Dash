@@ -29,23 +29,43 @@ public class HighScoreManager : MonoBehaviour
 
     public void AddPlayerToRanks() {
         playerName = inputField.GetComponent<TMP_InputField>().text;
+        if (playerName=="") {
+            Debug.LogWarning("Text box empty!");
+            return;
+        }
         Rank newRank = new Rank(playerName, playerScore);
-
-        /* Now we need to add this player to the ranks
-         * Sort the ranks list
-         * Get the index of the player in the list
-         * PlayerPrefs.SetString("ranks " + index, name) 
-         * PlayerPrefs.SetInt("ranks " + index, score)
-         * Pop last (11th) time item off the end of the list
-         */
+        /* Add new rank to list */
+        rankings.Add(newRank);
+        /* Sort based on score */
+        rankings.Sort(SortRanks);
+        /* Remove 11th item from list */
+        rankings.RemoveAt(10);
+        /* Get index of newRank in list */
+        int index = rankings.IndexOf(newRank);
+        /* Add rank to PlayerPrefs leaderboard */
+        AddPlayerToLeaderBoard(index, newRank);
     } 
+
+    private void AddPlayerToLeaderBoard(int index, Rank rank) {
+        PlayerPrefs.SetString("rank" + index.ToString() + "Name", rank.name);
+        PlayerPrefs.SetInt("rank" + index.ToString() + "Score", rank.score);
+    }
+
+    private int SortRanks(Rank a, Rank b) {
+        if (a.score < b.score) {
+            return 1;
+        } else if (a.score > b.score) {
+            return -1;
+        }
+        return 0;
+    }
 
     private void InitialiseRankings() {
         /* Fill Rank array with playerpref values */
         for (int i = 0; i < places; i++) {
             var rankname = "rank" + i.ToString();
-            rankings.Add(new Rank(PlayerPrefs.GetString(rankname, "----"),
-                PlayerPrefs.GetInt(rankname, 0)));
+            rankings.Add(new Rank(PlayerPrefs.GetString(rankname + "Name", "----"),
+                PlayerPrefs.GetInt(rankname + "Score", 0)));
         }
     }
 }

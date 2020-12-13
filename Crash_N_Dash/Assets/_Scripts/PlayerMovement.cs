@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private bool hasSpeedSigns = false;
     private bool countdownOver = false;
 
-    GameController gc = new GameController();
+    private GameController gc;
     private Rigidbody rb = new Rigidbody();
     private float hMovement;
 

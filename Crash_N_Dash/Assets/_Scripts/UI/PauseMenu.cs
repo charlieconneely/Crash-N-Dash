@@ -7,7 +7,6 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool isGamePaused = false;
     [SerializeField] GameObject pauseMenuUI;
-    private float currentDeltaTime = Time.deltaTime;
 
     void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
@@ -42,7 +41,6 @@ public class PauseMenu : MonoBehaviour
         isGamePaused = false;
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void PlaySound() {

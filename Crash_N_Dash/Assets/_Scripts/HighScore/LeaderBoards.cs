@@ -33,8 +33,8 @@ public class LeaderBoards : MonoBehaviour
         /* Fill Rank array with playerpref values */
         for (int i = 0; i < places; i++) {
             var rankname = "rank" + i.ToString();
-            rankings.Add(new Rank(PlayerPrefs.GetString(rankname, "----"),
-                PlayerPrefs.GetInt(rankname, 0)));
+            rankings.Add(new Rank(PlayerPrefs.GetString(rankname + "Name", "----"),
+                PlayerPrefs.GetInt(rankname + "Score", 0)));
         }
     }
 
