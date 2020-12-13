@@ -22,7 +22,9 @@
 * The `ReceiveRoad()` method will: 
   * Clear whatever is in the arrays at first.
   * Repopulate the spawn points array with the spawn point objects on the current road <br/> object passed in as a parameter.
-  * Call `SpawnObstacles()` which will:<br/> - Spawn cars randomly at the position of one of these spawn point objects. <br/> - Spawn other objects randomly within the general confines of the road object. 
+  * Call `SpawnObstacles()` which will: 
+    * Spawn cars randomly at the position of one of these spawn point objects. 
+    * Spawn other objects randomly within the general confines of the road object. 
 
 
 ### Speed increase
@@ -35,5 +37,44 @@
 ### Item collision
 ***Task***: Handle events correctly on collision with particular game objects. <br>
 ***Solution***: 
+* Assign tag to each game item (jerry can, traffic cone etc.)
+* Define the events which occur for each object inside `GameController.cs`
+  * e.g if hits petrol can - call `GainPoints` method, which adds to player score variable.
 * Inside `OnTriggerEnter` method inside `PlayerMovement.cs`:
-  * Switch statement...
+  * Determine the tag of the `Collider` object param.
+  * For each item: 
+    * Execute a particular method inside `GameController.cs` e.g. `case: "PetrolCan" { GameController.GainPoints(); }`
+    * Play appropriate sound using the `Play()` method in `AudioManager.cs`
+    * Destroy the item (if player hits a petrol can - it should disappear). 
+
+### Sound Management
+***Task***: Implement an organised system to manage game sounds <br>
+***Solution***: 
+* Create `Sound` class with attributes:
+  * `string name`
+  * `AudioClip clip`
+  * `float volume`
+  * `float pitch`
+  * `bool loop` 
+  * `AudioSource source` 
+* Inside `AudioManager.cs`:
+  * Call `DontDestroyOnLoad(gameObject)` so that this `AudioManager` will remain consistent across scenes. 
+  * Create a serializable array of `Sound` objects.
+  * Add source components to each `Sound` item on awake.
+  * This allows me to easily add + configure sounds from the unity inspector.
+  * The `Play(string name)` method will find the right sound item using the name param, and play the audio clip.
+  * The play function in `AudioManager.cs` can be called from any class with the following statement:
+    * `FindObjectOfType<AudioManager>().Play("SoundName");` <a></a>
+
+***Task***: Control music + effects volume levels using canvas sliders<br>
+***Solution***: 
+* Create two sliders UI objects in the Settings canvas - one for effects, one for music.
+* Add two Serializable UI.Slider variables to `SettingsMenu.cs`  
+* The music slider will trigger `SetMusicVolume(float v)` in `SettingsMenu.cs`.
+* `SetMusicVolume` will:
+  * Call the `AdjustVolume(float v, string n)` method in `AudioManager.cs`, passing the (float) volume and (string) "Theme".
+  * The `AdjustVolume` method will set the volume of the theme Sound object to the volume passed in **if** the string param == "Theme"
+* The effects slider will trigger `SetEffectsVolume(float v)` in `SettingsMenu.cs`
+* `SetEffectsVolume` will:
+  * Call the `AdjustVolume(float v, string n)` method in `AudioManager.cs`, passing the (float) volume and an empty string ("").
+  * The `AdjustVolume` method will set the volume of every Sound object that isn't named "Theme" to the volume passed in **if** the string param == ""
