@@ -16,11 +16,15 @@ public class GameController : MonoBehaviour
     [SerializeField] TextMeshProUGUI menuScore;
     [SerializeField] TextMeshProUGUI finalScore;
     [SerializeField] GameObject GameOverMenu;
+    [SerializeField] GameObject Ranked;
+    private HighScoreManager highScoreManager;
     private int pointsValue = 50;
     private int speedSigns = 0;
     private float displaySpeed = 10f;
+    private bool ranked = false;
 
     void Start() {
+        highScoreManager = FindObjectOfType<HighScoreManager>();
         StartCoroutine("StartGame");
     }
 
@@ -66,8 +70,14 @@ public class GameController : MonoBehaviour
 
     IEnumerator GameOver() {
         Destroy(GameObject.Find("Player"));
+        ranked = highScoreManager.CheckScore(score);
         yield return new WaitForSeconds(1f);
         GameOverMenu.SetActive(true);
+        if (ranked) {
+            Ranked.SetActive(true);
+        } else {
+            Ranked.SetActive(false);
+        }
     }
 
     IEnumerator StartGame() {
