@@ -26,7 +26,14 @@
 
 
 ### Speed increase
-***Task***: ... <br>
-***Solution***:
-* ...
-  * ...
+***Task***: Ensure the player's speed increases gradually throughout gameplay <br>
+***Solution***: 
+* Use an if statement to determine if the current time in seconds is a factor of 10.
+* If it is - increment the speed by `speedIncreaseRate` (0.5) multiplied by `Time.deltaTime` 
+* `Time.deltaTime` is necessary to prevent the incrementation from occuring too many times in that one second period. 
+
+### Item collision
+***Task***: Handle events correctly on collision with particular game objects. <br>
+***Solution***: 
+* Inside `OnTriggerEnter` method inside `PlayerMovement.cs`:
+  * Switch statement...
