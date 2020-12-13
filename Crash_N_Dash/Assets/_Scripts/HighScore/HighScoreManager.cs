@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class HighScoreManager : MonoBehaviour
 {
     [SerializeField] GameObject inputField;
+    [SerializeField] GameObject enterButton;
     List<Rank> rankings = new List<Rank>(); 
     private int places = 10;
     private string playerName;
@@ -33,6 +35,8 @@ public class HighScoreManager : MonoBehaviour
             Debug.LogWarning("Text box empty!");
             return;
         }
+        /* Disable button */
+        enterButton.GetComponent<Button>().interactable = false;
         Rank newRank = new Rank(playerName, playerScore);
         /* Add new rank to list */
         rankings.Add(newRank);
@@ -40,16 +44,9 @@ public class HighScoreManager : MonoBehaviour
         rankings.Sort(SortRanks);
         /* Remove 11th item from list */
         rankings.RemoveAt(10);
-        /* Get index of newRank in list */
-        int index = rankings.IndexOf(newRank);
-        /* Add rank to PlayerPrefs leaderboard */
-        AddPlayerToLeaderBoard(index, newRank);
+        /* Reinitialse PlayerPrefs vals with new list */
+        ReInitialiseRankings();
     } 
-
-    private void AddPlayerToLeaderBoard(int index, Rank rank) {
-        PlayerPrefs.SetString("rank" + index.ToString() + "Name", rank.name);
-        PlayerPrefs.SetInt("rank" + index.ToString() + "Score", rank.score);
-    }
 
     private int SortRanks(Rank a, Rank b) {
         if (a.score < b.score) {
@@ -61,11 +58,19 @@ public class HighScoreManager : MonoBehaviour
     }
 
     private void InitialiseRankings() {
-        /* Fill Rank array with playerpref values */
+        /* Fill Ranks list with playerpref values */
         for (int i = 0; i < places; i++) {
             var rankname = "rank" + i.ToString();
             rankings.Add(new Rank(PlayerPrefs.GetString(rankname + "Name", "----"),
                 PlayerPrefs.GetInt(rankname + "Score", 0)));
+        }
+    }
+
+    private void ReInitialiseRankings () {
+        /* Update player prefs with new ranks list */
+        for (int i = 0; i < places; i++) {
+            PlayerPrefs.SetString("rank" + i.ToString() + "Name", rankings[i].name);
+            PlayerPrefs.SetInt("rank" + i.ToString() + "Score", rankings[i].score);
         }
     }
 }

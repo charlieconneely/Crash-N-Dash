@@ -38,11 +38,18 @@ public class LeaderBoards : MonoBehaviour
         }
     }
 
+    public void ClearRanks() {
+        PlayerPrefs.DeleteAll();
+        rankings.Clear();
+        InitialiseRankings();
+    }
+
     private void OutputRankings() {
-        var counter = 0;
+        var position = 0;
         foreach(TextMeshProUGUI t in rankingsText) {
-            t.text = (counter+1).ToString() + ". " + rankings[counter].name + " " + rankings[counter].score.ToString();
-            counter++;
+            t.text = (position+1).ToString() + ". " + rankings[position].name + " " + rankings[position].score.ToString();
+            position++;
         }
     }
+
 }
