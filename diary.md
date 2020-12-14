@@ -27,7 +27,7 @@
   * As the speed increases, the perceived spawning rate will naturally increase. This is because the time between obstacles shortens. 
 * How the speed increases is outlined below under the heading "speed increase". <a></a> <br>
 
-### Conversations with designer to support these decisions:
+### Conversations with designer to support some of these decisions:
 Q: *Do you have any specific design/color patterns in mind for the menu UI? At the moment it is designed in an orange, arcade style.* <br>
 A:
   > Yeah, fine with me! I'll leave the artistic freedom with you...
@@ -64,7 +64,17 @@ A:
   * Repopulate the spawn points array with the spawn point objects on the current road <br/> object passed in as a parameter.
   * Call `SpawnObstacles()` which will: 
     * Spawn cars randomly at the position of one of these spawn point objects. 
-    * Spawn other objects randomly within the general confines of the road object. 
+    * Spawn other objects randomly within the general confines of the road object. <a></a>
+
+***Task***: Spawn speen signs and engines less frequently than other items. <br>
+***Solution***:
+* Inside `ObstacleSpawner.cs`:
+  * Create a method `bool DiceRoll(int odds)` to represent the rolling of a dice.
+  * `DiceRoll` will define two integers using `Random.Range(0, odds)`.
+  * If these numbers equal eachother - return `true`. Otherwise - return `false`.
+* When spawing a road sign or engine:
+  * Let's say we want the odds to be 1/15. 
+  * `if(DiceRoll(15)) { /* Spawn Object */ }`
 
 
 ### Speed increase
