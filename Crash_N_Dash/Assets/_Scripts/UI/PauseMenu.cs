@@ -33,6 +33,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void RestartGame() {
+        PlaySound();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

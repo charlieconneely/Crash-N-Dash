@@ -35,6 +35,7 @@ public class HighScoreManager : MonoBehaviour
             Debug.LogWarning("Text box empty!");
             return;
         }
+        FindObjectOfType<AudioManager>().Play("Click");
         /* Disable button */
         enterButton.GetComponent<Button>().interactable = false;
         Rank newRank = new Rank(playerName, playerScore);
