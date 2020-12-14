@@ -78,3 +78,43 @@
 * `SetEffectsVolume` will:
   * Call the `AdjustVolume(float v, string n)` method in `AudioManager.cs`, passing the (float) volume and an empty string ("").
   * The `AdjustVolume` method will set the volume of every Sound object that isn't named "Theme" to the volume passed in **if** the string param == ""
+
+### High score leaderboard Management
+***Task***: Save 10 high score values along with their associated username in memory and display on menu canvas. <br>
+***Solution***:  
+* Create a class `Rank` to represent players high scores. Two class variables - name (string) and score (int).
+* Create a script called `LeaderBoards.cs` to manage the display of the leaderboards in the Highscores menu page. 
+* Inside `LeaderBoards.cs` we will: 
+  * Define list `rankings` of type `Rank` to store the Rank objects (`List<Rank>`).
+  * Define a list of UI.Text objects. This list is used to store the 10 text fields in the menu canvas which display the ranks.
+  * Call a method to initialise this list with Rank objects. Name params are set as `PlayerPrefs.GetString(rank*<index>*Name)`. <br>
+  This will get the PlayerPrefs string value of that position if it exists, or return "----" if not. Similar actions are performed for the score param.
+  * Call a method to output the items of the array to the canvas Text objects. <a></a>
+
+***Task***: Clear the leaderboards using a 'Clear' button. <br>
+***Solution***: 
+* Add a clear button to canvas under the leaderboards.
+* Onclick - trigger function `ClearRanks()` inside `LeaderBoards.cs`.
+* `ClearRanks()` will:
+  * Call `PlayerPrefs.DeleteAll()`, which will delete all PlayerPrefs values.
+  * Clear the list of Rank objects.
+  * Reinitialise the Text UI objects with the now empty PlayerPrefs fields. <a></a>  
+
+***Task***: After gameplay, check if the score ranks and take appropriate action. <br>
+***Solution***:
+* Create script `HighScoreManager.cs` and attach it to a game object in the Game scene.
+* `HighScoreManager.cs` also contains a List of type Rank - populated with the PlayerPref values.
+* After the player dies, the `GameController.cs` script will call the `CheckScore.cs` script inside `HighScoreManager.cs`. <br>
+  * This function will return `true` if the player's score is greater than any others in the PlayerPrefs, `false` if not.
+  * If the function returns true, the canvas UI elements for informing + taking info from the player will appear under "GAMEOVER".
+  * This canvas element will display an input field to take in the user name. 
+* `HighScoreManager.cs` will recieve this username in the `AddPlayerToRanks()` method.
+* `HighScoreManager.cs` will then:
+  * Check if text was entered. 
+    * If yes: Make the input button uninteractable so the player can't call the function again.
+    * If no: `Debug.LogWarning("No text was entered")` and `return`.
+  * Create a Rank object using the player's score and input name.  
+  * Add this Rank object to the list of ranks.
+  * Sort the list in descending order based on the score of each item.
+  * Pop off the last (11th) element from the list. 
+  * Reinitialise the PlayerPrefs values with the state of the current list of Rank objects.
