@@ -5,8 +5,8 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     private Transform player;
-    private float yOffset = 10f;
-    private float zOffset = -25f;
+    private float yOffset = 15f;
+    private float zOffset = -30f;
     
     void Start() {
         player = GameObject.Find("Player").transform;

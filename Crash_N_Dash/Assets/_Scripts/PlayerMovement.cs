@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float speed = 1f;
     [SerializeField] GameObject explosionFX;
 
-    private float maxSpeed = 7f;
     private float speedIncreaseRate = 0.5f;
     private bool hasSpeedSigns = false;
     private bool countdownOver = false;
@@ -31,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
         if (!countdownOver) return; 
         Drive();
         Rotate();
-        if (speed < maxSpeed) IncrementSpeed();
+        IncrementSpeed();
     }
 
     private void Drive() {
