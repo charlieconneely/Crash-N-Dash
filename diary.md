@@ -1,5 +1,6 @@
 # Developer Diary
 ## Charlie Conneely - G00348887 
+## [Project Github Repository](https://github.com/charlieconneely/Crash-N-Dash)
 ### Unity Version used in development - 2020.1.6f1
 <hr>
 
@@ -38,6 +39,11 @@ A:
   > Yes, just make sure a suitable number of obstacles are spawning during the game. 
   > So that [gameplay] is always interesting. 
 
+Q: *You specified in the design document that the game is designed with mobile devices in mind for it's primary platform,* <br>
+ *with PC also a possibility. However, I have an Apple phone which makes testing very difficult (I might need to set up a Mac OS)* <br>
+ *Is it okay to just go ahead with PC as the only platform?* <br>
+A: 
+  > Yeah of course! No problem.
 
 ## Challenging tasks encountered during development: 
 
@@ -169,9 +175,10 @@ A:
   * Pop off the last (11th) element from the list. 
   * Reinitialise the PlayerPrefs values with the state of the current list of Rank objects. 
 
-  # Convos
-* **Question**: 
-  > Do you think orange is appropriate? 
-* **Answer**: 
-  > Yes, It's pretty cool.
-  > Just make sure the player can see it okay. 
+## References:
+*(All Unity Assets are referenced in the README)*
+1. [Endless Road Spawning](https://youtu.be/RYouWeqZbPc)
+1. [Managing Audio](https://youtu.be/6OT43pvUyfY)
+1. [Menu UI](https://youtu.be/zc8ac_qUXQY)
+1. [Saving game data for leaderboards](https://docs.unity3d.com/ScriptReference/PlayerPrefs.html)
+1. [Splash Screen Set-Up](https://web.microsoftstream.com/video/740f3abd-5880-4c2b-8e89-f9e2362b6182) 
