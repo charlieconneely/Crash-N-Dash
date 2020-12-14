@@ -17,18 +17,6 @@ public class LeaderBoards : MonoBehaviour
         OutputRankings();
     }
 
-    public bool CheckScore(int score) {
-        var ranks = false;
-        /* if score is higher than any of the playerpref values... */
-        foreach (Rank r in rankings) {
-            if (score > r.score) {
-                ranks = true;
-            }
-        }
-        Debug.Log("Got to bottom of method");
-        return ranks;
-    }
-
     public void InitialiseRankings() {
         /* Fill Rank array with playerpref values */
         for (int i = 0; i < places; i++) {
