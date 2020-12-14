@@ -1,5 +1,45 @@
-## Developer Diary 
+# Developer Diary
+## Charlie Conneely - G00348887 
+### Unity Version used in development - 2020.1.6f1
+<hr>
 
+### Controls
+* Since the only control option the player has is to steer left or right, the left and right arrow keys were chosen <br>
+  These were chosen as they are the most obvious and will certainly be assumed as the controls by any user no matter  <br>
+  their level of experience as a gamer.
+* The `esc` button will pause and unpause the game as this is commonplace in PC gaming. 
+
+### Win/Loss Conditions
+* The designer specified that the winning conditions depend on the score reach or possibly the speed reached.
+* I chose the score as defining the winning conditions based off speed would render collecting points obsolete.
+* The only true objective of the game is to stay alive and rank on the leaderboard (as with almost any endless runner).
+
+### UI Choices
+* For the menu UI elements, I imported a font from the asset store called [Free Pixel Font - Thaleah](https://assetstore.unity.com/packages/2d/fonts/free-pixel-font-thaleah-140059).
+* This 'pixel-block' style font adds an arcade feel to the game.
+* I used TextMeshPro for all text elements as it remembers a lot of design decisions and therefore simplifies consistency across scenes.
+* I chose a fady-orange tone for all text elements as I believe it matches well with the speed-racer theme. 
+
+### Rate of increasing difficulty
+* The increasing speed is the primary source of increasing difficulty.
+* The spawning of obstacles remains consistent. Here's why:
+  * Combining the speed increase with an increase in obstacle spawning results in very sudden superfluous difficulty.
+  * As the speed increases, the perceived spawning rate will naturally increase. This is because the time between obstacles shortens. 
+* How the speed increases is outlined below under the heading "speed increase". <a></a> <br>
+
+### Conversations with designer to support these decisions:
+Q: *Do you have any specific design/color patterns in mind for the menu UI? At the moment it is designed in an orange, arcade style.* <br>
+A:
+  > Yeah, fine with me! I'll leave the artistic freedom with you...
+  > just as long as text/GameObjects are clearly visible to the user. 
+
+Q: *Is it fair to say that the speed should be the only increasingly difficult factor? Considering it will always increase.* <br>
+A:
+  > Yes, just make sure a suitable number of obstacles are spawning during the game. 
+  > So that [gameplay] is always interesting. 
+
+
+## Challenging tasks encountered during development: 
 
 ### Road Spawning
 ***Task***: Create the illusion of an endless road by continually spawning road objects. <br>
@@ -77,7 +117,7 @@
 * The effects slider will trigger `SetEffectsVolume(float v)` in `SettingsMenu.cs`
 * `SetEffectsVolume` will:
   * Call the `AdjustVolume(float v, string n)` method in `AudioManager.cs`, passing the (float) volume and an empty string ("").
-  * The `AdjustVolume` method will set the volume of every Sound object that isn't named "Theme" to the volume passed in **if** the string param == ""
+  * The `AdjustVolume` method will set the volume of every Sound object that isn't named "Theme" to the volume passed in **if** the string param == "" 
 
 ### High score leaderboard Management
 ***Task***: Save 10 high score values along with their associated username in memory and display on menu canvas. <br>
@@ -117,4 +157,11 @@
   * Add this Rank object to the list of ranks.
   * Sort the list in descending order based on the score of each item.
   * Pop off the last (11th) element from the list. 
-  * Reinitialise the PlayerPrefs values with the state of the current list of Rank objects.
+  * Reinitialise the PlayerPrefs values with the state of the current list of Rank objects. 
+
+  # Convos
+* **Question**: 
+  > Do you think orange is appropriate? 
+* **Answer**: 
+  > Yes, It's pretty cool.
+  > Just make sure the player can see it okay. 
