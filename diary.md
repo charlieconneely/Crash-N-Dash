@@ -2,7 +2,7 @@
 ## Charlie Conneely - G00348887 
 ## [Project Github Repository](https://github.com/charlieconneely/Crash-N-Dash)
 ### Unity Version used in development - 2020.1.6f1
-<hr>
+***
 
 ### Controls
 * Since the only control option the player has is to steer left or right, the left and right arrow keys were chosen <br>
@@ -45,6 +45,7 @@ Q: *You specified in the design document that the game is designed with mobile d
 A: 
   > Yeah of course! No problem.
 
+*** 
 ## Challenging tasks encountered during development: 
 
 ### Road Spawning
@@ -175,6 +176,54 @@ A:
   * Pop off the last (11th) element from the list. 
   * Reinitialise the PlayerPrefs values with the state of the current list of Rank objects. 
 
+***
+## Test Plan
+
+### Objectives and Tasks
+* The main objectives of the testing process are:
+  * To achieve maximum decision coverage.
+  * To ensure that the product is fit for launch with no critical bugs. <br>
+* The tasks involved:
+  * System and Integration Testing
+  * Unit Testing
+
+### Scope
+Throughout the testing lifecycle, the following functions/interfaces of Crash 'N
+Dash will be tested:
+* **Start Menu:** Ensure that all buttons work correctly (including the sound
+and music levels inside Settings). We need to ensure that all "back"
+buttons work correctly i.e. that the user can always swiftly return to the
+menu.
+* **In-Game Menu:** All buttons inside this menu should work essentially
+the same as in the start menu. However, in place of the "Play" option,
+the user should see a "Resume" option. All buttons should be
+thoroughly tested for bugs. The restart option should reset everything
+and take the user back to the beginning of the game.
+* **Gameplay:** All functions need to be tested (gaining/losing points & lives, gaining/using collectables etc.)
+* **Post-Death Menu:** If the player has beaten any of the ten highscores,
+he/she should be prompted to enter his/her username. Their score
+should display. Options to play again or exit should be present
+
+### Testing Strategy
+* **Unit Testing** <br>
+As most functions are only applicable when playing the game,
+the purpose of this testing is to ensure that there are no
+critical bugs found, that all areas of the code will be executed
+at least once and that these functions perform well when
+given certain test data.
+* **System and Integration Testing** <br>
+This includes testing:
+  * How the program performs when navigating between the
+main menu and the game or game and the pause menu etc.
+  * How does the game hold up under different circumstances
+pertaining to hardware e.g. monitor with different frame rate. 
+
+### Control Procedures
+**Problem Reporting** <br>
+Throughout the testing process, any bugs should be noted in the diary
+document. Depending on the severity of the bug, the designer may need to
+be contacted should any changes be made to the game. 
+***
 ## References:
 *(All Unity Assets are referenced in the README)*
 1. [Endless Road Spawning](https://youtu.be/RYouWeqZbPc)
